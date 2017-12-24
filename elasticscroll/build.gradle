@@ -29,3 +29,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+//需要放在这,放上面会出问题 Error:Cause: android.compileSdkVersion is missing!
+apply from: 'bintray.gradle'
