@@ -10,8 +10,8 @@ import android.view.View;
 import android.view.animation.TranslateAnimation;
 
 /**
+ * @author hxw on 2017/6/28.
  * 弹性滑动布局,和scrollView 一样的用法
- * Created by hxw on 2017/6/28.
  */
 
 public class ElasticScrollView extends NestedScrollView {
@@ -25,22 +25,19 @@ public class ElasticScrollView extends NestedScrollView {
      * 松开手指后, 界面回到正常位置需要的动画时间
      */
     private static final int ANIM_TIME = 300;
-
+    /**
+     * 用于记录正常的布局位置
+     */
+    private final Rect originalRect = new Rect();
     /**
      * ScrollView的子View, 也是ScrollView的唯一一个子View
      */
     private View contentView;
-
     /**
      * 手指按下时的Y值, 用于在移动时计算移动距离
      * 如果按下时不能上拉和下拉, 会在手指移动时更新为当前手指的Y值
      */
     private float startY;
-
-    /**
-     * 用于记录正常的布局位置
-     */
-    private final Rect originalRect = new Rect();
 
     public ElasticScrollView(Context context) {
         super(context);
@@ -59,24 +56,10 @@ public class ElasticScrollView extends NestedScrollView {
     }
 
     /**
-     * 这方法是在 onFinishInflate 之后调用
-     */
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        super.onLayout(changed, l, t, r, b);
-
-        if (contentView == null) {
-            return;
-        }
-
-        //ScrollView中的唯一子控件的位置信息, 这个位置信息在整个控件的生命周期中保持不变
-        originalRect.set(contentView.getLeft(), contentView.getTop(),
-                contentView.getRight(), contentView.getBottom());
-
-    }
-
-    /**
      * 在事件分发中, 处理上拉和下拉的逻辑
+     *
+     * @param ev 动作类型
+     * @return true or false
      */
     @SuppressLint("ClickableViewAccessibility")
     @Override
@@ -151,6 +134,28 @@ public class ElasticScrollView extends NestedScrollView {
         return super.onTouchEvent(ev);
     }
 
+    /**
+     * 这方法是在 onFinishInflate 之后调用
+     *
+     * @param changed 是否改变
+     * @param l       left
+     * @param t       top
+     * @param r       right
+     * @param b       bottom
+     */
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+
+        if (contentView == null) {
+            return;
+        }
+
+        //ScrollView中的唯一子控件的位置信息, 这个位置信息在整个控件的生命周期中保持不变
+        originalRect.set(contentView.getLeft(), contentView.getTop(),
+                contentView.getRight(), contentView.getBottom());
+
+    }
 
     /**
      * 判断是否滚动到顶部，可以继续下拉
