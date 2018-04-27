@@ -5,7 +5,7 @@
 一个弹性滑动布局，和ScrollView一样使用
 ## 下载
 ```gradle
-compile 'com.hxw.elasticscroll:elasticscroll:1.0.0'
+compile 'com.hxw.elasticscroll:elasticscroll:<latestVersion>'
 ```
 
 ## License
