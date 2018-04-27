@@ -1,11 +1,11 @@
 # ElasticScrollView
-[![bintray](https://api.bintray.com/packages/huxiaowei008/maven/ElasticScrollView/images/download.svg) ](https://bintray.com/huxiaowei008/maven/ElasticScrollView/_latestVersion)
+[![Download](https://api.bintray.com/packages/huxiaowei008/maven/ElasticScrollView/images/download.svg) ](https://bintray.com/huxiaowei008/maven/ElasticScrollView/_latestVersion)
 [![License](http://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square) ](http://www.apache.org/licenses/LICENSE-2.0)
 
 一个弹性滑动布局，和ScrollView一样使用
 ## 下载
 ```gradle
-compile 'com.hxw.elasticscroll:elasticscroll:<latestVersion>'
+compile 'com.hxw:elasticscroll:<latestVersion>'
 ```
 
 ## License
